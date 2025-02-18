@@ -1,4 +1,4 @@
-theme: minima
+theme: "minimal-mistakes"
 title: Gelhaus Lab
 description: Welcome to our research lab website!
 url  : https://GelahusLab.github.io    
