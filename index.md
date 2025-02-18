@@ -3,16 +3,15 @@ layout: default
 title: Home
 ---
 
-# Welcome to the My Research Lab  
-**We focus on cutting-edge research in AI and machine learning.**  
+# Welcome to Gelhaus Lab 
+**on the formation, signaling and metabolism of bioactive fatty acids in lung and airway disease.**  
 
 ### 🏢 About Our Lab  
-Located at **XYZ University**, our lab specializes in:  
-- Artificial Intelligence  
-- Computer Vision  
-- Natural Language Processing  
+Located at **University of Pittsburgh**, our lab specializes in:  
+- high resolution mass spectrometry (metabolomics, lipidomics, and proteomics)
+- biochemical techniques (PCR, western, ELISA, flow cytometry) 
 
-📍 **Address:** 123 Lab Street, Science City  
+📍 **Address:** 3501 Fifth Avenue Biomedical Science Tower 3,Pittsburgh
 📧 **Contact:** mylab@university.edu  
 
 ---
