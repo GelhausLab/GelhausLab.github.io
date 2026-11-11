@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#081F3F">
+<title>Gelhaus Lab | University of Pittsburgh</title>
+<meta name="description" content="The Gelhaus Lab studies electrophilic fatty acids, their signaling, and their use as therapeutics for obesity-associated asthma. University of Pittsburgh, Department of Pharmacology and Chemical Biology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #081F3F;
+    --surface: #0E2E58;
+    --ink: #E8EEF8;
+    --muted: #A8B9D3;
+    --head: #FFFFFF;
+    --link: #9CC4FF;
+    --blue: #9CC4FF;
+    --blue-soft: rgba(156, 196, 255, 0.12);
+    --gold: #F2B01E;
+    --line: rgba(156, 196, 255, 0.2);
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper) linear-gradient(180deg, #0B2A52 0, #081F3F 420px) no-repeat;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: #D2E4FF; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+
+  /* Header and tabs */
+  .site-head {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(8, 31, 63, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .head-row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 64px; }
+  .brand { font-family: var(--serif); font-size: 1.35rem; font-weight: 600; color: var(--head); letter-spacing: -0.01em; white-space: nowrap; text-decoration: none; }
+  .brand:hover { color: var(--head); }
+  [role="tablist"] { display: flex; gap: 0.25rem; overflow-x: auto; scrollbar-width: none; margin-right: -0.5rem; }
+  [role="tablist"]::-webkit-scrollbar { display: none; }
+  [role="tab"] {
+    appearance: none; background: none; border: 0; cursor: pointer;
+    font: 500 0.95rem var(--sans); color: var(--muted);
+    padding: 1.2rem 0.8rem 1.1rem;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+  }
+  [role="tab"]:hover { color: var(--ink); }
+  [role="tab"][aria-selected="true"] { color: var(--head); border-bottom-color: var(--gold); font-weight: 600; }
+
+  /* Panels */
+  main { padding-block: 3rem 5rem; min-height: 70vh; }
+  [role="tabpanel"][hidden] { display: none; }
+  h1, h2, h3 { font-family: var(--serif); color: var(--head); line-height: 1.15; letter-spacing: -0.015em; margin: 0; }
+  h2 { font-size: clamp(1.9rem, 3.4vw, 2.5rem); font-weight: 500; margin-bottom: 1.25rem; }
+  h3 { font-size: 1.35rem; font-weight: 600; margin-bottom: 0.5rem; }
+  p { margin: 0 0 1rem; max-width: 68ch; }
+  .lede { font-family: var(--serif); font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.4; color: var(--ink); max-width: 36ch; }
+  .muted { color: var(--muted); }
+  .section { margin-top: 3.25rem; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .banner { margin: 0; }
+  .banner img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--line); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35); }
+
+  /* Home hero */
+  .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3rem; align-items: center; }
+  h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 500; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+  .roles { color: var(--muted); margin: 0; }
+  .roles strong { color: var(--ink); font-weight: 600; }
+  .portrait { position: relative; aspect-ratio: 4 / 5; background: var(--blue-soft); border-radius: 4px; overflow: hidden; }
+  .portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .portrait .initials { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--serif); font-size: 5rem; color: var(--blue); opacity: 0.35; }
+
+  /* Focus list */
+  .focus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; margin-top: 1.5rem; }
+  .focus a.item { display: block; text-decoration: none; color: inherit; border-top: 3px solid var(--gold); padding-top: 0.9rem; }
+  .focus a.item:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+  .focus p { color: var(--muted); font-size: 0.97rem; margin: 0; }
+
+  /* Background timeline */
+  .timeline { list-style: none; padding: 0; margin: 1rem 0 0; border-left: 2px solid var(--line); }
+  .timeline li { position: relative; padding: 0 0 1.1rem 1.5rem; }
+  .timeline li::before { content: ""; position: absolute; left: -6px; top: 0.55em; width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--gold); }
+  .timeline .when { display: block; font-size: 0.88rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; }
+  .plain { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+  .plain li { padding: 0.55rem 0; border-bottom: 1px solid var(--line); }
+  .plain .when { color: var(--muted); font-size: 0.9rem; display: block; }
+
+  /* Research */
+  .theme { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 2.5rem; padding-block: 2rem; border-top: 1px solid var(--line); }
+  .theme:first-of-type { border-top: 0; padding-top: 0.5rem; }
+  .theme h3 { font-size: 1.5rem; }
+  .theme ul { margin: 0 0 1rem; padding-left: 1.2rem; max-width: 68ch; }
+  .theme li { margin-bottom: 0.5rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; padding: 0; list-style: none; }
+  .tags li { background: var(--blue-soft); color: var(--blue); padding: 0.3rem 0.7rem; border-radius: 3px; font-size: 0.92rem; font-weight: 500; }
+
+  /* Publications */
+  .btn { display: inline-block; background: var(--gold); color: #081F3F; padding: 0.7rem 1.2rem; border-radius: 3px; font-weight: 600; text-decoration: none; }
+  .btn:hover { background: #FFC94D; color: #081F3F; }
+  .btn.ghost { background: transparent; color: var(--link); border: 1.5px solid var(--link); }
+  .btn.ghost:hover { background: var(--blue-soft); color: #D2E4FF; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+  .pub-group { margin-top: 2.25rem; }
+  .pub-group { border-top: 2px solid var(--gold); }
+  .pub { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .pub .yr { font-family: var(--serif); font-size: 1.15rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .pub .ttl { font-weight: 600; display: block; margin-bottom: 0.15rem; }
+  .pub .auth { color: var(--muted); font-size: 0.93rem; }
+  .pub .auth b { color: var(--ink); }
+  .pub .jrn { font-size: 0.93rem; }
+  .pub .jrn a { margin-left: 0.4rem; }
+
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.75rem; margin-top: 1.25rem; }
+  .person { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .person .ph { position: relative; overflow: hidden; aspect-ratio: 1; background: rgba(156, 196, 255, 0.1); }
+  .person .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .person .ph .initials { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--serif); font-size: 3rem; color: var(--link); opacity: 0.45; }
+  .person .body { padding: 1rem 1.1rem 1.2rem; }
+  .person .ph img { object-position: center 25%; }
+  .person h3 { font-size: 1.2rem; margin-bottom: 0.1rem; }
+  .person .role { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.6rem; }
+  .person .role .r { display: block; margin-top: 0.4rem; }
+  .person p { font-size: 0.93rem; margin: 0 0 0.5rem; }
+  .empty { border: 1.5px dashed var(--line); border-radius: 4px; padding: 2rem; color: var(--muted); background: var(--surface); max-width: 68ch; }
+
+  /* Contact */
+  dl.contact { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 0.9rem 1.5rem; margin: 1.5rem 0 0; max-width: 720px; }
+  dl.contact dt { color: var(--muted); }
+  dl.contact dd { margin: 0; }
+
+  footer { border-top: 1px solid var(--line); padding-block: 2rem; color: var(--muted); font-size: 0.9rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem 2rem; }
+
+  @media (max-width: 820px) {
+    .hero, .two-col, .theme { grid-template-columns: 1fr; gap: 1.5rem; }
+    .portrait { max-width: 280px; aspect-ratio: 1; }
+    .focus { grid-template-columns: 1fr; }
+    .head-row { flex-direction: column; align-items: flex-start; gap: 0; padding-top: 0.6rem; }
+    [role="tablist"] { width: 100%; margin-right: 0; }
+    [role="tab"] { padding: 0.7rem 0.7rem 0.6rem; }
+    dl.contact { grid-template-columns: 1fr; gap: 0.1rem; }
+    dl.contact dd { margin-bottom: 0.9rem; }
+    .pub { grid-template-columns: 1fr; gap: 0.25rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="brand" href="#home" data-tab="home">Gelhaus Lab</a>
+    <div role="tablist" aria-label="Site sections">
+      <button role="tab" id="tab-home" aria-controls="panel-home" aria-selected="true" data-tab="home">Home</button>
+      <button role="tab" id="tab-research" aria-controls="panel-research" aria-selected="false" tabindex="-1" data-tab="research">Research</button>
+      <button role="tab" id="tab-publications" aria-controls="panel-publications" aria-selected="false" tabindex="-1" data-tab="publications">Publications</button>
+      <button role="tab" id="tab-team" aria-controls="panel-team" aria-selected="false" tabindex="-1" data-tab="team">Team</button>
+      <button role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1" data-tab="contact">Contact</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+
+  <!-- HOME -->
+  <section role="tabpanel" id="panel-home" aria-labelledby="tab-home">
+    <h1 class="sr-only">Gelhaus Lab, University of Pittsburgh</h1>
+    <figure class="banner">
+      <img src="images/Gelhaus%20Lab.png" width="1600" height="817" alt="Gelhaus Lab research overview. Systemic metabolism links the lung, liver, and gut microbiome. Metabolic dysregulation in lipids, bile acids, and metabolites contributes to allergic asthma and obesity-associated asthma.">
+    </figure>
+
+    <div class="section">
+      <h2>Research focus</h2>
+      <div class="focus">
+        <a class="item" href="#research" data-tab="research">
+          <h3>Electrophilic fatty acids</h3>
+          <p>How they form, which enzymes make them, and how they signal in inflammation.</p>
+        </a>
+        <a class="item" href="#research" data-tab="research">
+          <h3>Electrophiles as therapeutics</h3>
+          <p>Nitro-oleic acid for obesity-associated asthma, from mouse models to a clinical trial.</p>
+        </a>
+        <a class="item" href="#research" data-tab="research">
+          <h3>Metabolism and lung function</h3>
+          <p>How the gut, liver, and microbiome shape lung function in allergic asthma and obesity-associated asthma.</p>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- RESEARCH -->
+  <section role="tabpanel" id="panel-research" aria-labelledby="tab-research" hidden>
+    <h2>Research</h2>
+    <figure class="banner" style="margin-top:1.5rem">
+      <img src="images/Research%20Tab.png" width="1600" height="817" alt="Overview of the lab's research. Nitro-oleic acid, an electrophilic fatty acid, acts on the lung and liver. Liver-lung crosstalk, with input from the gut and microbiome, drives metabolic and inflammatory reprogramming that contributes to asthma and obesity-associated asthma.">
+    </figure>
+
+    <div class="section" style="margin-top:2.5rem">
+      <div class="theme">
+        <h3>Formation and signaling of electrophilic fatty acids</h3>
+        <div>
+          <p>Fatty acid metabolites with an alpha, beta-unsaturated carbonyl were once seen as inactive end products. We showed that they signal. They act without G protein-coupled receptors, suppress NF-kB inflammatory signaling, and activate the Nrf2 antioxidant response.</p>
+          <ul>
+            <li>We showed that 15-hydroxyprostaglandin dehydrogenase (15-PGDH) oxidizes hydroxylated omega-3 fatty acids into electrophiles.</li>
+            <li>We test whether lipoxin A4 forms in macrophages and whether it and its 15-oxo metabolite signal through FPR2 or through receptor-independent routes.</li>
+            <li>We study how nitro-fatty acids redirect carbon flow through central metabolism in macrophages to promote resolution of inflammation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="theme">
+        <h3>Electrophiles as novel therapeutics</h3>
+        <div>
+          <p>Nitro-oleic acid (NO2-OA, also called CP-6) improved lung function in a mouse model of obese allergic airway disease, with changes in host and microbial metabolism.</p>
+          <p>CP-6 is now in a double-blind, crossover clinical trial in people with obesity and asthma. Each participant receives placebo and CP-6, each for 6 weeks, with a 4-week washout between them. The trial measures lung function with FEV1 and PC20.</p>
+        </div>
+      </div>
+
+      <div class="theme">
+        <h3>Systemic metabolism and lung function</h3>
+        <div>
+          <p>Our CP-6 work raised a broader question about how host and microbial metabolism affect the lung in obesity. We linked gut microbial composition and function to lung function in obese allergic airway disease. Nitroalkene fatty acids also change bile acid metabolism alongside lung function.</p>
+          <p>The liver metabolizes fatty acids and bile acids, so changes in the liver alter the lipid signals that reach the lung. In lean and obese mouse models of allergic asthma, we measure liver cytochrome P450 enzymes, bile acids, and lipid mediators such as epoxyeicosatrienoic acids alongside lung function.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section role="tabpanel" id="panel-publications" aria-labelledby="tab-publications" hidden>
+    <h2>Publications</h2>
+    <div id="pub-root"></div>
+  </section>
+
+  <!-- TEAM -->
+  <section role="tabpanel" id="panel-team" aria-labelledby="tab-team" hidden>
+    <h2>Team</h2>
+    <div id="team-root"></div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section role="tabpanel" id="panel-contact" aria-labelledby="tab-contact" hidden>
+    <h2>Contact</h2>
+    <dl class="contact">
+      <dt>Principal Investigator</dt>
+      <dd>Stacy Gelhaus, PhD<br>Associate Professor, Department of Pharmacology and Chemical Biology<br>Scientific Director, Health Sciences Mass Spectrometry Core</dd>
+      <dt>Email</dt>
+      <dd><a href="mailto:gstacy@pitt.edu">gstacy@pitt.edu</a></dd>
+      <dt>Office</dt>
+      <dd>9048 Biomedical Science Tower 3<br>200 Lothrop Street<br>Pittsburgh, PA 15261</dd>
+      <dt>Department</dt>
+      <dd><a href="https://web.pitt.edu/pharmacology/Faculty/stacygelhaus/" target="_blank" rel="noopener">Faculty page, Pharmacology and Chemical Biology</a></dd>
+      <dt>Publications</dt>
+      <dd><a href="https://www.ncbi.nlm.nih.gov/myncbi/1FGLecvg-JQAB/bibliography/public/?sortby=pubDate&amp;sdirection=ascending" target="_blank" rel="noopener">NCBI bibliography</a></dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Gelhaus Lab, Department of Pharmacology and Chemical Biology, University of Pittsburgh</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- Edit these two lists to update the site ---------- */
+
+/* Team members. Add or remove objects as needed.
+   group: "Current" or "Alumni". photo and email are optional (for example photo: "images/Name%20Headshot.jpg"). Optional pos and zoom fields frame the face.. */
+const TEAM = [
+  { name: "Ipsita Dey, PhD", role: "Postdoctoral Associate", group: "Current", photo: "images/Ipsita%27s%20Headshot.jpeg", pos: "42% 0%", zoom: 1.35, origin: "50% 40%",
+    email: "ipd6@pitt.edu" },
+  { name: "Sri Ramya Donepudi", role: "Cell, Molecular and Systems Biology (CMSB) Program", group: "Current", photo: "images/Ramya%27s%20headshot.jpg",
+    email: "srd84@pitt.edu" },
+  { name: "Abigail Maloy", role: "Molecular Pharmacology Program", group: "Current", photo: "images/Abigail%20Maloy%20Headshot.png", pos: "50% 20%", zoom: 1.2, origin: "51% 44%",
+    email: "abm112@pitt.edu" },
+  { name: "Crystal Uvalle", role: "Lab Manager", group: "Current", photo: "images/Crystal%20Headshot.jpg", pos: "50% 0%", zoom: 1.25, origin: "50% 38%" },
+  { name: "Emily Stevenson, PhD", role: "Postdoctoral Associate", group: "Alumni" },
+  { name: "Victoria Heinrich, MD, PhD", role: "Medical Scientist Training Program (MSTP)", group: "Alumni" }
+];
+
+/* Selected publications. "auth" accepts HTML, so bold her name with <b>. */
+const PUBS = [
+  { group: "Lab papers", year: 2025, title: "Nitro-oleic acid attenuates pro-inflammatory metabolic signaling mediators linked to effector function in macrophage",
+    auth: "Stevenson ER, O'Brien JP, Manuel AM, Uvalle CE, Buchan GJ, Mullett SJ, Lockwood K, Suber T, Freeman BA, <b>Gelhaus SL</b>", jrn: "Front Physiol", pmid: "41178983" },
+  { group: "Lab papers", year: 2025, title: "Lipoxin A4 yields an electrophilic 15-oxo metabolite that mediates FPR2 receptor-independent anti-inflammatory signaling",
+    auth: "Koudelka A, Buchan GJ, Cechova V, O'Brien JP, Liu H, Woodcock SR, Mullett SJ, Zhang C, Freeman BA, <b>Gelhaus SL</b>", jrn: "J Lipid Res 66(1):100705", pmid: "39566850" },
+  { group: "Lab papers", year: 2023, title: "Meta-omics profiling of the gut-lung axis illuminates metabolic networks and host-microbial interactions associated with elevated lung elastance in a murine model of obese asthma",
+    auth: "Heinrich VA, Uvalle C, Manni ML, et al., Methé BA, Morris A, <b>Gelhaus SL</b>", jrn: "Front Microbiomes", pmid: "37293566" },
+  { group: "Lab papers", year: 2021, title: "Nitroalkene fatty acids modulate bile acid metabolism and lung function in obese asthma",
+    auth: "Manni ML, Heinrich VA, Buchan GJ, et al., Freeman BA, <b>Wendell SG</b>", jrn: "Sci Rep 11:17788", pmid: "34493738" },
+  { group: "Lab papers", year: 2021, title: "Primary saturation of alpha,beta-unsaturated carbonyl containing fatty acids does not abolish electrophilicity",
+    auth: "Snyder NW, O'Brien JP, Singh B, et al., Mesaros C, <b>Wendell SG</b>", jrn: "Chem Biol Interact 350:109689", pmid: "34634267" },
+  { group: "Lab papers", year: 2018, title: "Nitro-fatty acid inhibition of triple negative breast cancer cell viability, migration, invasion and tumor growth",
+    auth: "Woodcock CC, Huang Y, Woodcock SR, et al., Freeman BA, <b>Wendell SG</b>", jrn: "J Biol Chem 293(4):1120-1137", pmid: "29158255" },
+  { group: "Lab papers", year: 2017, title: "Conjugated linoleic acid modulates clinical responses to oral nitrite and nitrate",
+    auth: "Hughan KS*, <b>Wendell SG</b>*, Delmastro-Greenwood M, et al., Freeman B, Gladwin M (*co-first authors)", jrn: "Hypertension 70(3):634-644", pmid: "28739973" },
+  { group: "Lab papers", year: 2015, title: "15-hydroxyprostaglandin dehydrogenase generation of electrophilic lipid signaling mediators from hydroxy omega-3 fatty acids",
+    auth: "<b>Wendell SG</b>, Golin-Bisello F, Wenzel S, Sobol R, Holguin F, Freeman B", jrn: "J Biol Chem 290(9):5868-5880", pmid: "25586183" },
+  { group: "Lab papers", year: 2015, title: "15-oxoeicosatetraenoic acid is a 15-hydroxyprostaglandin dehydrogenase-derived electrophilic mediator of inflammatory signaling pathways",
+    auth: "Snyder NW, Golin-Bisello F, Gao Y, Blair IA, Freeman BA, <b>Wendell SG</b>", jrn: "Chem Biol Interact 234:144-153", pmid: "25450232" },
+  { group: "Lab papers", year: 2015, title: "Nitrite and nitrate-dependent generation of fatty acid nitroalkenes",
+    auth: "Delmastro-Greenwood M, Hughan KS, Vitturi DA, et al., Freeman BA, <b>Wendell SG</b>", jrn: "Free Radic Biol Med 89:333-341", pmid: "26385079" },
+
+  { group: "Methods, reviews, and field recommendations", year: 2025, title: "Technical recommendations for liquid chromatography-mass spectrometry analysis of oxylipins",
+    auth: "Schebb NH, Kampschulte N, Hagn G, et al., <b>Gelhaus SL</b>, et al., O'Donnell VB", jrn: "Sci Signal 18(887):eadw1245", pmid: "40392938" },
+  { group: "Methods, reviews, and field recommendations", year: 2023, title: "Failure to apply standard limit-of-detection or limit-of-quantitation criteria to specialized pro-resolving mediator analysis incorrectly characterizes their presence in biological samples",
+    auth: "O'Donnell VB, Schebb NH, Milne GL, et al., <b>Gelhaus SL</b>, et al., FitzGerald GA", jrn: "Nat Commun 14:7172", pmid: "37945602" },
+  { group: "Methods, reviews, and field recommendations", year: 2022, title: "Dehydrogenase reductase 9 (SDR9C4) and related homologs recognize a broad spectrum of lipid mediator oxylipins as substrates",
+    auth: "Belyaeva OV, Wirth SE, Boeglin WE, et al., <b>Wendell SG</b>, et al., Kedishvili N", jrn: "J Biol Chem 298:101257", pmid: "34953854" },
+  { group: "Methods, reviews, and field recommendations", year: 2020, title: "G protein-coupled receptors in asthma therapy: pharmacology and drug action",
+    auth: "<b>Wendell SG</b>, Fan H, Zhang C", jrn: "Pharmacol Rev 72:1-49", pmid: "31767622" },
+  { group: "Methods, reviews, and field recommendations", year: 2014, title: "Fatty acids, inflammation, and asthma",
+    auth: "<b>Wendell SG</b>, Baffi C, Holguin F", jrn: "J Allergy Clin Immunol 133(5):1255-1264", pmid: "24613565" },
+  { group: "Methods, reviews, and field recommendations", year: 2011, title: "Cellular lipid extraction for targeted stable isotope dilution liquid chromatography mass spectrometry analysis",
+    auth: "<b>Gelhaus SL</b>, Mesaros CA, Blair IA", jrn: "J Vis Exp (57):3399", pmid: "22127066" },
+
+  { group: "Selected collaborations", year: 2025, title: "Exercise-induced microbiota metabolite enhances CD8 T cell antitumor immunity promoting immunotherapy efficacy",
+    auth: "Phelps CM, Willis NB, Duan T, et al., Mullett SJ, <b>Gelhaus SL</b>, et al., Meisel M", jrn: "Cell", pmid: "40639377" },
+  { group: "Selected collaborations", year: 2023, title: "Dietary tryptophan catabolite released by intratumoral Lactobacillus reuteri facilitates aPD-L1 therapy",
+    auth: "Bender MJ, McPherson AC, Phelps CM, et al., Mullett SJ, <b>Gelhaus SL</b>, et al., Meisel M", jrn: "Cell 186(9):1846-1862", pmid: "37028428" },
+  { group: "Selected collaborations", year: 2021, title: "Metabolic support of tumour-infiltrating regulatory T cells by lactic acid",
+    auth: "Watson MJ, Vignali PDA, Mullett SJ, et al., <b>Wendell SG</b>, Delgoffe GM", jrn: "Nature 591(7851):645-651", pmid: "33589820" },
+  { group: "Selected collaborations", year: 2020, title: "Germinal center B cells utilize only minimal glycolysis but selectively oxidize fatty acids for energy",
+    auth: "Weisel FJ, Mullett SJ, Elsner RF, et al., <b>Wendell SG</b>, et al., Shlomchik MJ", jrn: "Nat Immunol 21:331-342", pmid: "32066950" }
+];
+
+/* ---------- Tabs ---------- */
+const TAB_IDS = ["home", "research", "publications", "team", "contact"];
+const TITLES = { home: "Gelhaus Lab", research: "Research", publications: "Publications", team: "Team", contact: "Contact" };
+const tabs = TAB_IDS.map(id => document.getElementById("tab-" + id));
+const panels = TAB_IDS.map(id => document.getElementById("panel-" + id));
+
+function show(id, updateHash) {
+  if (!TAB_IDS.includes(id)) id = "home";
+  TAB_IDS.forEach((t, i) => {
+    const on = t === id;
+    tabs[i].setAttribute("aria-selected", on);
+    tabs[i].tabIndex = on ? 0 : -1;
+    panels[i].hidden = !on;
+  });
+  document.title = (id === "home" ? "Gelhaus Lab" : TITLES[id] + " | Gelhaus Lab") + " | University of Pittsburgh";
+  if (updateHash) history.pushState(null, "", "#" + id);
+  window.scrollTo(0, 0);
+}
+
+document.querySelectorAll("[data-tab]").forEach(el => {
+  el.addEventListener("click", e => { e.preventDefault(); show(el.dataset.tab, true); });
+});
+document.querySelector('[role="tablist"]').addEventListener("keydown", e => {
+  const cur = tabs.findIndex(t => t.getAttribute("aria-selected") === "true");
+  let next = null;
+  if (e.key === "ArrowRight") next = (cur + 1) % tabs.length;
+  if (e.key === "ArrowLeft") next = (cur - 1 + tabs.length) % tabs.length;
+  if (e.key === "Home") next = 0;
+  if (e.key === "End") next = tabs.length - 1;
+  if (next !== null) { e.preventDefault(); show(TAB_IDS[next], true); tabs[next].focus(); }
+});
+window.addEventListener("hashchange", () => show(location.hash.slice(1), false));
+
+/* ---------- Publications ---------- */
+(function renderPubs() {
+  const root = document.getElementById("pub-root");
+  root.innerHTML = `<div class="pub-group">${PUBS.slice().sort((a, b) => b.year - a.year).map(p => `
+      <article class="pub">
+        <div class="yr">${p.year}</div>
+        <div>
+          <span class="ttl">${p.title}</span>
+          <div class="auth">${p.auth}</div>
+          <div class="jrn"><i>${p.jrn}</i>${p.pmid ? `<a href="https://pubmed.ncbi.nlm.nih.gov/${p.pmid}/" target="_blank" rel="noopener">PubMed</a>` : ""}</div>
+        </div>
+      </article>`).join("")}</div>`;
+})();
+
+/* ---------- Team ---------- */
+(function renderTeam() {
+  const root = document.getElementById("team-root");
+  const initials = n => n.split(/\s+/).map(w => w[0]).slice(0, 2).join("").toUpperCase();
+  const card = m => `
+    <article class="person">
+      ${(m.photo || m.group !== "Alumni") ? `<div class="ph"><span class="initials" aria-hidden="true">${initials(m.name)}</span>${m.photo ? `<img src="${m.photo}" alt="${m.name}" style="object-position:${m.pos || "50% 20%"};${m.zoom ? `transform:scale(${m.zoom});transform-origin:${m.origin || "50% 40%"}` : ""}" onerror="this.remove()">` : ""}</div>` : ""}
+      <div class="body">
+        <h3>${m.name}</h3>
+        <div class="role">${m.role || ""}</div>
+        ${m.bio ? `<p>${m.bio}</p>` : ""}
+        ${m.email ? `<p><a href="mailto:${m.email}">${m.email}</a></p>` : ""}
+      </div>
+    </article>`;
+
+  const pi = { name: "Stacy Gelhaus, PhD", role: "Principal Investigator<span class=\"r\">Associate Professor, Department of Pharmacology and Chemical Biology</span><span class=\"r\">Scientific Director, Health Sciences Mass Spectrometry Core</span>", photo: "images/profile.jpg", email: "gstacy@pitt.edu" };
+  let html = `<h3 style="margin-top:1.5rem">Principal Investigator</h3><div class="team-grid">${card(pi)}</div>`;
+
+  const current = TEAM.filter(m => (m.group || "Current") === "Current");
+  const alumni = TEAM.filter(m => m.group === "Alumni");
+  if (current.length) html += `<h3 style="margin-top:3rem">Current members</h3><div class="team-grid">${current.map(card).join("")}</div>`;
+  if (alumni.length) html += `<h3 style="margin-top:3rem">Alumni</h3><div class="team-grid">${alumni.map(card).join("")}</div>`;
+  if (!TEAM.length) html += `<div class="empty" style="margin-top:2.5rem">Lab member profiles are coming soon.</div>`;
+  root.innerHTML = html;
+})();
+
+show(location.hash.slice(1), false);
+</script>
+</body>
+</html>
