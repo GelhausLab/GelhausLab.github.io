@@ -188,7 +188,7 @@
   <section role="tabpanel" id="panel-home" aria-labelledby="tab-home">
     <h1 class="sr-only">Gelhaus Lab, University of Pittsburgh</h1>
     <figure class="banner">
-      <img src="images/Gelhaus%20Lab.png" width="1600" height="817" alt="Gelhaus Lab research overview. Systemic metabolism links the lung, liver, and gut microbiome. Metabolic dysregulation in lipids, bile acids, and metabolites contributes to allergic asthma and obesity-associated asthma.">
+      <img src="Gelhaus%20Lab.png" width="1600" height="817" alt="Gelhaus Lab research overview. Systemic metabolism links the lung, liver, and gut microbiome. Metabolic dysregulation in lipids, bile acids, and metabolites contributes to allergic asthma and obesity-associated asthma.">
     </figure>
 
     <div class="section">
@@ -215,7 +215,7 @@
   <section role="tabpanel" id="panel-research" aria-labelledby="tab-research" hidden>
     <h2>Research</h2>
     <figure class="banner" style="margin-top:1.5rem">
-      <img src="images/Research%20Tab.png" width="1600" height="817" alt="Overview of the lab's research. Nitro-oleic acid, an electrophilic fatty acid, acts on the lung and liver. Liver-lung crosstalk, with input from the gut and microbiome, drives metabolic and inflammatory reprogramming that contributes to asthma and obesity-associated asthma.">
+      <img src="Research%20Tab.png" width="1600" height="817" alt="Overview of the lab's research. Nitro-oleic acid, an electrophilic fatty acid, acts on the lung and liver. Liver-lung crosstalk, with input from the gut and microbiome, drives metabolic and inflammatory reprogramming that contributes to asthma and obesity-associated asthma.">
     </figure>
 
     <div class="section" style="margin-top:2.5rem">
@@ -292,15 +292,15 @@
 /* ---------- Edit these two lists to update the site ---------- */
 
 /* Team members. Add or remove objects as needed.
-   group: "Current" or "Alumni". photo and email are optional (for example photo: "images/Name%20Headshot.jpg"). Optional pos and zoom fields frame the face.. */
+   group: "Current" or "Alumni". photo and email are optional (for example photo: "Name%20Headshot.jpg"). Optional pos and zoom fields frame the face.. */
 const TEAM = [
-  { name: "Ipsita Dey, PhD", role: "Postdoctoral Associate", group: "Current", photo: "images/Ipsita%27s%20Headshot.jpeg", pos: "42% 0%", zoom: 1.35, origin: "50% 40%",
+  { name: "Ipsita Dey, PhD", role: "Postdoctoral Associate", group: "Current", photo: "Ipsita%27s%20Headshot.jpeg", pos: "42% 0%", zoom: 1.35, origin: "50% 40%",
     email: "ipd6@pitt.edu" },
-  { name: "Sri Ramya Donepudi", role: "Cell, Molecular and Systems Biology (CMSB) Program", group: "Current", photo: "images/Ramya%27s%20headshot.jpg",
+  { name: "Sri Ramya Donepudi", role: "Cell, Molecular and Systems Biology (CMSB) Program", group: "Current", photo: "Ramya%27s%20headshot.jpg",
     email: "srd84@pitt.edu" },
-  { name: "Abigail Maloy", role: "Molecular Pharmacology Program", group: "Current", photo: "images/Abigail%20Maloy%20Headshot.png", pos: "50% 20%", zoom: 1.2, origin: "51% 44%",
+  { name: "Abigail Maloy", role: "Molecular Pharmacology Program", group: "Current", photo: "Abigail%20Maloy%20Headshot.png", pos: "50% 20%", zoom: 1.2, origin: "51% 44%",
     email: "abm112@pitt.edu" },
-  { name: "Crystal Uvalle", role: "Lab Manager", group: "Current", photo: "images/Crystal%20Headshot.jpg", pos: "50% 0%", zoom: 1.25, origin: "50% 38%" },
+  { name: "Crystal Uvalle", role: "Lab Manager", group: "Current", photo: "Crystal%20Headshot.jpg", pos: "50% 0%", zoom: 1.25, origin: "50% 38%" },
   { name: "Emily Stevenson, PhD", role: "Postdoctoral Associate", group: "Alumni" },
   { name: "Victoria Heinrich, MD, PhD", role: "Medical Scientist Training Program (MSTP)", group: "Alumni" }
 ];
@@ -413,7 +413,7 @@ window.addEventListener("hashchange", () => show(location.hash.slice(1), false))
       </div>
     </article>`;
 
-  const pi = { name: "Stacy Gelhaus, PhD", role: "Principal Investigator<span class=\"r\">Associate Professor, Department of Pharmacology and Chemical Biology</span><span class=\"r\">Scientific Director, Health Sciences Mass Spectrometry Core</span>", photo: "images/profile.jpg", email: "gstacy@pitt.edu" };
+  const pi = { name: "Stacy Gelhaus, PhD", role: "Principal Investigator<span class=\"r\">Associate Professor, Department of Pharmacology and Chemical Biology</span><span class=\"r\">Scientific Director, Health Sciences Mass Spectrometry Core</span>", photo: "profile.jpg", email: "gstacy@pitt.edu" };
   let html = `<h3 style="margin-top:1.5rem">Principal Investigator</h3><div class="team-grid">${card(pi)}</div>`;
 
   const current = TEAM.filter(m => (m.group || "Current") === "Current");
